@@ -1,0 +1,39 @@
+#root{
+    margin: 10px;
+}
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+.code-snippet .row{
+    --bs-gutter-x: 0 !important;
+}
+.code-snippet pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.code-snippet .card-header {
+    padding: 5px 2px !important;
+}
+
+.badge{
+    padding: 10px !important;
+    font-size:x-large;
+}
+.create-snippet{
+    width: 100%;
+    height: 100vh;
+}
+.snippet-title{
+    color:rgb(104, 26, 143);
+    display:flex;
+    justify-content:center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:x-large;
+}
