@@ -37,3 +37,28 @@ html, body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size:x-large;
 }
+
+.logo{
+    width: 70%;
+    height: 70%;
+  margin: auto;
+}
+
+.tech-card .card {
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tech-card:hover{
+    transform: scale(1.05);
+
+}
+.tech-card .logo {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+}

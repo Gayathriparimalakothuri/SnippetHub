@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CodeSnippets from './codesnippets';
 import { Button, Card, CardBody, CardFooter, CardHeader } from 'react-bootstrap';
 import Searchsnipet from './searchsnipet';
@@ -8,16 +8,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 const CodeSnippet = () => {
-
+   const location = useLocation();
+   const searchTerm = location?.state?.search
     const { snippets } = useCodeSnippets();
-    console.log('snippets', snippets)
     const codesnipepts = snippets || [];
-    console.log(' code snippets', snippets)
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState('')
     const [filteredSnippets, setFilteredSnippets] = useState(codesnipepts);
-    console.log('codesnippets', codesnipepts)
-    console.log('filteredSnippets', filteredSnippets)
 
     const options = [5, 10, 15, 20, 25, 30];
     const [itemsPerPage, setItemsPerPage] = useState(15);
@@ -54,8 +51,15 @@ const CodeSnippet = () => {
     }, [searchQuery])
 
     const fetchFilteredSnippets = () => {
-        console.log('search', searchQuery)
-        if (searchQuery && searchQuery.trim() !== '') {
+        console.log('search', searchQuery,searchTerm)
+        if (searchTerm && searchTerm.trim() !== '') {
+            const filteredSnippets = codesnipepts?.filter((code) =>
+               code.language.toLowerCase() === searchTerm.toLowerCase()
+            );
+            console.log('filtered snippets', filteredSnippets);
+            setFilteredSnippets(filteredSnippets)
+        }
+        else if (searchQuery && searchQuery.trim() !== '') {
             const filteredSnippets = codesnipepts?.filter((code) =>
                 code.title.toLowerCase().includes(searchQuery.toLowerCase().trim()) || code.language.toLowerCase().includes(searchQuery.toLowerCase().trim())
             );

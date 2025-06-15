@@ -4,6 +4,7 @@ const Searchsnipet = ( { onSearch }) => {
     const [searchTerm,setSearchTerm] = useState('');
 
     const handleSearch = (e) =>{
+        console.log('sear',e.target.value)
         e.preventDefault();
         setSearchTerm(e.target.value)
         onSearch(e.target.value);

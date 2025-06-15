@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ViewCodeSnippet from './components/ViewCodeSnippet';
 import CreateCodeSnippet from './components/CreateCodeSnippet';
 import { ToastContainer } from 'react-toastify';
+import HomePage from './components/HomePage';
 
 function App() {
 
@@ -23,8 +24,10 @@ function App() {
     <BrowserRouter>
      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <Routes>
-        <Route path="/" element={<CodeSnippet />} />
+        {/* <Route path="/" element={<CodeSnippet />} /> */}
+        <Route path="/" element={<HomePage />} />
         <Route path="/view-snippet" element={<ViewCodeSnippet />} />
+        <Route path="/code-snippet" element={<CodeSnippet />} />
         <Route path="/create-snippet" element={<CreateCodeSnippet />} />
       </Routes>
     </BrowserRouter>
